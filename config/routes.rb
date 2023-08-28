@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users
   resources :causes
   resources :donations
   # Routing logic: fallback requests for React Router.

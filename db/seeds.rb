@@ -1,9 +1,29 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+require "bcrypt"
+
 puts "Clearing the database..."
 [Cause, Donation].each do |model|
   model.delete_all
 end
+
+puts "🌱 Seeding users..."
+
+u1 = User.create(
+  username: "user1", email_address: "user1@example.com", password_digest: BCrypt::Password.create("password1"),
+)
+
+u2 = User.create(
+  username: "user2", email_address: "user2@example.com", password_digest: BCrypt::Password.create("password2"),
+)
+
+u3 = User.create(
+  username: "user3", email_address: "user3@example.com", password_digest: BCrypt::Password.create("password3"),
+)
+
+u4 = User.create(
+   username: "user4", email_address: "user4@example.com", password_digest: BCrypt::Password.create("password4"),
+ )
 
 puts "🌱 Seeding causes..."
 
@@ -48,16 +68,17 @@ c5 = Cause.create!(
   image_url: "https://example.com/images/reading_tablets.jpg",
 )
 
-Donation.create(cause_id: c1, amount: 25)
-Donation.create(cause_id: c2, amount: 100)
-Donation.create(cause_id: c3, amount: 15)
-Donation.create(cause_id: c4, amount: 30)
-Donation.create(cause_id: c5, amount: 250)
-Donation.create(cause_id: c1, amount: 50)
-Donation.create(cause_id: c2, amount: 75)
-Donation.create(cause_id: c3, amount: 25)
-Donation.create(cause_id: c2, amount: 40)
-Donation.create(cause_id: c2, amount: 20)
+puts "🌱 Seeding donations..."
 
+Donation.create!(user_id: u2.id, cause_id: c1.id, amount: 25)
+Donation.create!(user_id: u1.id, cause_id: c2.id, amount: 100)
+Donation.create!(user_id: u4.id, cause_id: c3.id, amount: 15)
+Donation.create!(user_id: u3.id, cause_id: c4.id, amount: 30)
+Donation.create!(user_id: u4.id, cause_id: c5.id, amount: 250)
+Donation.create!(user_id: u4.id, cause_id: c1.id, amount: 50)
+Donation.create!(user_id: u4.id, cause_id: c2.id, amount: 75)
+Donation.create!(user_id: u3.id, cause_id: c3.id, amount: 25)
+Donation.create!(user_id: u2.id, cause_id: c2.id, amount: 40)
+Donation.create!(user_id: u1.id, cause_id: c2.id, amount: 20)
 
 puts "✅ Done seeding!"

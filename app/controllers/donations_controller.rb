@@ -11,10 +11,27 @@ class DonationsController < ApplicationController
     render json: donation, status: :ok
   end
 
+  def create
+   donation = Donation.create!(donation_params)
+   render json: donation, status: :created
+  end
+
+  def update 
+   donation = Donation.find(params[:id])
+   donation.update(donation_params)
+   render json: donation, status: :ok
+  end
+
+  def destroy
+   donation = Donation.find(params[:id])
+   donation.destroy
+   render json: {}, status: :no_content
+  end
+
   private
 
   def donation_params
-    params.permit(:amount)
+    params.permit(:amount, :cause_id, :user_id)
   end
 
   def render_not_found_response

@@ -10,19 +10,27 @@ end
 puts "🌱 Seeding users..."
 
 u1 = User.create(
-  username: "user1", email_address: "user1@example.com", password_digest: BCrypt::Password.create("password1"),
+  username: "user1", 
+  email_address: "user1@example.com", 
+  password_digest: BCrypt::Password.create("password1"),
 )
 
 u2 = User.create(
-  username: "user2", email_address: "user2@example.com", password_digest: BCrypt::Password.create("password2"),
+  username: "user2", 
+  email_address: "user2@example.com", 
+  password_digest: BCrypt::Password.create("password2"),
 )
 
 u3 = User.create(
-  username: "user3", email_address: "user3@example.com", password_digest: BCrypt::Password.create("password3"),
+  username: "user3", 
+  email_address: "user3@example.com", 
+  password_digest: BCrypt::Password.create("password3"),
 )
 
 u4 = User.create(
-   username: "user4", email_address: "user4@example.com", password_digest: BCrypt::Password.create("password4"),
+   username: "user4", 
+   email_address: "user4@example.com", 
+   password_digest: BCrypt::Password.create("password4"),
  )
 
 puts "🌱 Seeding causes..."

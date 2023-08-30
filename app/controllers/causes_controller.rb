@@ -1,4 +1,5 @@
 class CausesController < ApplicationController
+  # skip_before_action :authorize, only: :show
 
   def index
     causes = Cause.all

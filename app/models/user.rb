@@ -4,6 +4,7 @@ class User < ApplicationRecord
    has_many :donations
    has_many :causes, through: :donations
 
+   validates :password, confirmation: true
    validates :username, :email_address, presence: true
    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 end

@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-
-  get 'sessions/create'
-  get 'sessions/destroy'
   resources :causes
   resources :donations
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
-  # post "/login", to: "sessions#create"
-  # delete "/logout", to: "sessions#destroy"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

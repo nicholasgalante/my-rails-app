@@ -1,6 +1,7 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import { Routes, Route, BrowserRouter } from "react-router-dom";
 import SignIn from "../pages/SignIn";
+import CauseList from "../pages/CauseList";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    <CauseList/>
     <SignIn/>
     </>
   );

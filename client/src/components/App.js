@@ -1,5 +1,6 @@
 // import React, { useState, useEffect } from "react";
 // import { Routes, Route, BrowserRouter } from "react-router-dom";
+import SignIn from "../pages/SignIn";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -15,10 +16,7 @@ function App() {
 
   return (
     <>
-    
-      <main>
-
-      </main>
+    <SignIn/>
     </>
   );
 }

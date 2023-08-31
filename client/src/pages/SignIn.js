@@ -1,8 +1,8 @@
-import { useState } from "React";
+import React from "react";
+import { useState } from "react";
 
 function SignIn() {
-   
-  return <>Hi</>;
+  return <>Sign in here!</>;
 }
 
 export default SignIn;

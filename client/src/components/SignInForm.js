@@ -4,14 +4,31 @@ import { FormField, Label, Input, Button } from "../styles";
 function SignInForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
 
-  console.log("Username: ", username);
-  console.log("Password: ", password);
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    fetch("/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => console.log("User: ", user));
+      } else {
+        r.json().then((err) => console.log("Errors:", err.errors));
+      }
+    });
+  }
 
   return (
-    <form>
-      <FormField>
+    <form onSubmit={handleSubmit}>
+      <FormField >
         <Label>Username</Label>
         <Input
           type="text"
@@ -32,7 +49,9 @@ function SignInForm() {
         />
       </FormField>
       <FormField>
-        <Button></Button>
+        <Button variant="fill" color="primary" type="submit">
+          {isLoading ? "Loading..." : "Sign in"}
+        </Button>
       </FormField>
       <FormField></FormField>
     </form>

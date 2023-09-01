@@ -1,7 +1,9 @@
 import { Button } from "./Button";
-import { Wrapper } from "./Wrapper";
+import { FormField } from "./FormField";
+import { Input } from "./Input";
+import { Label } from "./Label";
 import { Logo } from "./Logo";
 import { Nav } from "./Nav";
-import { FormField } from "./FormField";
+import { Wrapper } from "./Wrapper";
 
-export { Button, Wrapper, Logo, Nav, FormField };
+export { Button, FormField, Input, Label, Logo, Nav, Wrapper };

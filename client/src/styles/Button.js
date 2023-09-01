@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import React from "react";
 
-const COLORS = {
-  primary: {
-    "--main": "indigo",
-    "--accent": "white",
-  },
-  secondary: {
-    "--main": "lavenderblush",
-    "--accent": "indigo",
-  },
-};
-
 export function Button({ variant = "fill", color = "primary", ...props }) {
   let Component;
   if (variant === "fill") {
@@ -22,6 +11,17 @@ export function Button({ variant = "fill", color = "primary", ...props }) {
 
   return <Component style={COLORS[color]} {...props} />;
 }
+
+const COLORS = {
+  primary: {
+    "--main": "indigo",
+    "--accent": "white",
+  },
+  secondary: {
+    "--main": "lavenderblush",
+    "--accent": "indigo",
+  },
+};
 
 const ButtonBase = styled.button`
   cursor: pointer;

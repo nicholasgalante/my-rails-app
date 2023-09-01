@@ -6,14 +6,7 @@ import SignUpForm from "../components/SignUpForm";
 function SignIn() {
   const [showSignIn, setShowSignIn] = useState(true);
 
-  return <>{showSignIn ? <><SignInForm/>          
-  <p>
-  Don't have an account? &nbsp;
-  <Button color="secondary" onClick={() => setShowLogin(false)}>
-    Sign Up
-  </Button>
-</p>
-</> : <><SignUpForm/></>}</>;
+  return <>{showSignIn ? <><SignInForm/></> : <><SignUpForm/></>}</>;
 }
 
 export default SignIn;

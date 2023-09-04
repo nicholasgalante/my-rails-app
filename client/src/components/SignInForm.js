@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormField, Label, Input, Button } from "../styles";
 
-function SignInForm({setUser}) {
+function SignInForm({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -27,34 +27,33 @@ function SignInForm({setUser}) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField >
-        <Label>Username</Label>
-        <Input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Label>Password</Label>
-        <Input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Sign in"}
-        </Button>
-      </FormField>
-      <FormField></FormField>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <FormField>
+          <Label>Username</Label>
+          <Input
+            type="text"
+            id="username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </FormField>
+        <FormField>
+          <Label>Password</Label>
+          <Input
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormField>
+        <FormField>
+          <Button variant="fill" color="primary" type="submit">
+            {isLoading ? "Loading..." : "Sign in"}
+          </Button>
+        </FormField>
+      </form>
   );
 }
 

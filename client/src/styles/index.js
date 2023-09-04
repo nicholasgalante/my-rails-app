@@ -5,7 +5,8 @@ import { Input } from "./Input";
 import { Label } from "./Label";
 import { Logo } from "./Logo";
 import { Nav } from "./Nav";
+import { NavWrapper } from "./NavWrapper";
 import { Wrapper } from "./Wrapper";
 
 
-export { Button, Error, FormField, Input, Label, Logo, Nav, Wrapper };
+export { Button, Error, FormField, Input, Label, Logo, Nav, NavWrapper, Wrapper };

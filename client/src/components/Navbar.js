@@ -1,15 +1,16 @@
 import React from "react";
-import { Button, Wrapper, Logo, Nav } from "../styles"
+import { Button, NavWrapper, Logo, Nav } from "../styles"
 
-function Navbar({ user }) {
+function Navbar({ user, handleSignOut }) {
   return (
-    <Wrapper>
+    <NavWrapper>
       <Logo>App Name</Logo>
       <Nav>
          {user ? <Button>Create a Cause</Button> : null }
-         {user ? <Button>Sign out</Button> : <Button>Sign in</Button>}
+         {user ? <Button>{user.username}</Button> : null }
+         {user ? <Button onClick={handleSignOut}>Sign out</Button> : <Button>Sign in</Button>}
       </Nav>
-    </Wrapper>
+    </NavWrapper>
   );
 }
 

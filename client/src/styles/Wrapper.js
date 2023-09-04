@@ -1,8 +1,6 @@
-import styled from "styled-components";
+import { styled } from "styled-components";
 
-export const Wrapper = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
+export const Wrapper = styled.section`
+  max-width: 800px;
+  margin: 40px auto;
 `;

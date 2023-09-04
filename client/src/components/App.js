@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
 import { Wrapper } from "../styles";
+import NewCause from "../pages/NewCause";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +33,7 @@ function App() {
     <>
       <Navbar user={user} handleSignOut={handleSignOut} />
       <Wrapper>
+        <NewCause/>
         <CauseList />
         <SignIn setUser={setUser} />
       </Wrapper>

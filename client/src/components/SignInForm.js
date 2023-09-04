@@ -53,6 +53,11 @@ function SignInForm({ setUser }) {
           {isLoading ? "Loading..." : "Sign in"}
         </Button>
       </FormField>
+      <FormField>
+        {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
+      </FormField>
     </form>
   );
 }

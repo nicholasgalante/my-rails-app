@@ -4,28 +4,28 @@ import SignInForm from "../components/SignInForm";
 import SignUpForm from "../components/SignUpForm";
 import { Button } from "../styles";
 
-function SignIn() {
+function SignIn( {setUser}) {
   const [showSignIn, setShowSignIn] = useState(true);
 
   return (
     <>
       {showSignIn ? (
         <>
-          <SignInForm />{" "}
+          <SignInForm setUser={setUser}/>{" "}
           <p>
             Don't have an account? &nbsp;
             <Button color="secondary" onClick={() => setShowSignIn(false)}>
-              Sign Up
+              Create an Account
             </Button>
           </p>
         </>
       ) : (
         <>
-          <SignUpForm />{" "}
+          <SignUpForm setUser={setUser}/>{" "}
           <p>
             Already have an account? &nbsp;
             <Button color="secondary" onClick={() => setShowSignIn(true)}>
-              Log In
+              Sign In
             </Button>
           </p>
         </>

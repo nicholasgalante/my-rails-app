@@ -16,13 +16,13 @@ function App() {
     });
   }, []);
 
-  console.log(user)
+  console.log("USER: ", user)
 
   return (
     <>
     <Navbar user={user}/>
     <CauseList/>
-    <SignIn/>
+    <SignIn setUser={setUser}/>
     </>
   );
 }

@@ -7,9 +7,9 @@ skip_before_action :authorize, only: :create
     render json: user, status: :created
   end
 
-  #   def show
-  #     render json: @current_user
-  #   end
+    def show
+      render json: @current_user
+    end
 
   private
 

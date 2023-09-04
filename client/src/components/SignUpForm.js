@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
 
-function SignUpForm() {
+function SignUpForm({ setUser }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,13 +19,13 @@ function SignUpForm() {
         email_address: email,
         password,
         password_confirmation: passwordConfirmation,
-      })
+      }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => console.log(user));
+        r.json().then((user) => setUser(user));
       } else {
-        r.json().then((err) => console.log(err.errors));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }

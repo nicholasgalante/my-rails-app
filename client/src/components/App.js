@@ -8,8 +8,18 @@ import NewCause from "../pages/NewCause";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [causes, setCauses] = useState([]);
 
-  // auto-login
+  //get causes
+  useEffect(() => {
+    fetch("/causes").then((r) => {
+      if (r.ok) {
+        r.json().then((causes) => setCauses(causes));
+      }
+    });
+  }, []);
+
+  //auto-login
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
@@ -17,6 +27,10 @@ function App() {
       }
     });
   }, []);
+
+  function handleAddNewCause(newCause){
+    setCauses([...causes, newCause])
+  }
 
   //sign out
   function handleSignOut() {
@@ -27,20 +41,16 @@ function App() {
     });
   }
 
-  console.log("USER: ", user);
-
   return (
     <>
       <Navbar user={user} handleSignOut={handleSignOut} />
       <Wrapper>
-        <NewCause/>
-        <CauseList />
+        <NewCause handleAddNewCause={handleAddNewCause}/>
+        <CauseList causes={causes}/>
         <SignIn setUser={setUser} />
       </Wrapper>
     </>
   );
 }
-
-
 
 export default App;

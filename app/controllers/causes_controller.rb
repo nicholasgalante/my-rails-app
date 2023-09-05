@@ -13,7 +13,6 @@ class CausesController < ApplicationController
 
   def create
     cause = Cause.create!(cause_params)
-    byebug
     render json: cause, status: :created
   end
 

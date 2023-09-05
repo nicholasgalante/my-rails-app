@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button, Error, Input, FormField, Label, Wrapper } from "../styles";
 
-function NewCause() {
+function NewCause({handleAddNewCause}) {
   const [title, setTitle] = useState("");
   const [schoolName, setSchoolName] = useState("");
   const [city, setCity] = useState("");
@@ -32,9 +32,9 @@ function NewCause() {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((res) => console.log(res));
+        r.json().then((res) => handleAddNewCause(res));
       } else {
-        r.json().then((err) => console.log(err.errors));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }

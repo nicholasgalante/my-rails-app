@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
@@ -9,6 +9,7 @@ import NewCause from "../pages/NewCause";
 function App() {
   const [user, setUser] = useState(null);
   const [causes, setCauses] = useState([]);
+  // const navigate = useNavigate();
 
   //get causes
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
   }, []);
 
   function handleAddNewCause(newCause) {
+    // navigate(`/causes/${newCause.id}`);
     setCauses([...causes, newCause]);
   }
 
@@ -40,21 +42,19 @@ function App() {
       }
     });
   }
-  
+
   return (
     <>
       <Navbar user={user} handleSignOut={handleSignOut} />
       <Wrapper>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<CauseList causes={causes} />} />
-            <Route
-              path="/new"
-              element={<NewCause handleAddNewCause={handleAddNewCause} />}
-            />
-            <Route path="/signin" element={<SignIn setUser={setUser} />} />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CauseList causes={causes} />} />
+          <Route
+            path="/new"
+            element={<NewCause handleAddNewCause={handleAddNewCause} />}
+          />
+          <Route path="/signin" element={<SignIn setUser={setUser} />} />
+        </Routes>
       </Wrapper>
     </>
   );

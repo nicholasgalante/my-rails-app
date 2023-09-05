@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { FormField, Label, Input, Button, Error } from "../styles";
+import { useNavigate } from "react-router-dom";
+
 
 function SignInForm({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +23,7 @@ function SignInForm({ setUser }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => setUser(user));
+        navigate("/")
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

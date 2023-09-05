@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Error, Input, FormField, Label, Wrapper } from "../styles";
+import { useNavigate } from "react-router-dom";
 
-function NewCause({handleAddNewCause}) {
+function NewCause({ handleAddNewCause }) {
   const [title, setTitle] = useState("");
   const [schoolName, setSchoolName] = useState("");
   const [city, setCity] = useState("");
@@ -12,6 +13,7 @@ function NewCause({handleAddNewCause}) {
   const [imageURL, setImageURL] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,23 +34,15 @@ function NewCause({handleAddNewCause}) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((res) => handleAddNewCause(res));
+        r.json()
+          .then((res) => console.log(res.id))
+          .then((res) => handleAddNewCause(res))
+         //  .then((res) => navigate(`/causes/${res.id}`));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
-
-  console.log("ERRORS: ", errors);
-
-  console.log({
-    title,
-    school_name: schoolName,
-    city,
-    state,
-    description,
-    image_url: imageURL,
-  });
 
   return (
     <Wrapper>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
@@ -28,8 +28,8 @@ function App() {
     });
   }, []);
 
-  function handleAddNewCause(newCause){
-    setCauses([...causes, newCause])
+  function handleAddNewCause(newCause) {
+    setCauses([...causes, newCause]);
   }
 
   //sign out
@@ -40,14 +40,21 @@ function App() {
       }
     });
   }
-
+  
   return (
     <>
       <Navbar user={user} handleSignOut={handleSignOut} />
       <Wrapper>
-        <NewCause handleAddNewCause={handleAddNewCause}/>
-        <CauseList causes={causes}/>
-        <SignIn setUser={setUser} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<CauseList causes={causes} />} />
+            <Route
+              path="/new"
+              element={<NewCause handleAddNewCause={handleAddNewCause} />}
+            />
+            <Route path="/signin" element={<SignIn setUser={setUser} />} />
+          </Routes>
+        </BrowserRouter>
       </Wrapper>
     </>
   );

@@ -78,15 +78,15 @@ c5 = Cause.create!(
 
 puts "🌱 Seeding donations..."
 
-Donation.create!(user_id: u2.id, cause_id: c1.id, amount: 25)
-Donation.create!(user_id: u1.id, cause_id: c2.id, amount: 100)
-Donation.create!(user_id: u4.id, cause_id: c3.id, amount: 15)
-Donation.create!(user_id: u3.id, cause_id: c4.id, amount: 30)
-Donation.create!(user_id: u4.id, cause_id: c5.id, amount: 250)
-Donation.create!(user_id: u4.id, cause_id: c1.id, amount: 50)
-Donation.create!(user_id: u4.id, cause_id: c2.id, amount: 75)
-Donation.create!(user_id: u3.id, cause_id: c3.id, amount: 25)
-Donation.create!(user_id: u2.id, cause_id: c2.id, amount: 40)
-Donation.create!(user_id: u1.id, cause_id: c2.id, amount: 20)
+Donation.create!(user_id: u2.id, cause_id: c1.id, amount: 25.00)
+Donation.create!(user_id: u1.id, cause_id: c2.id, amount: 100.00)
+Donation.create!(user_id: u4.id, cause_id: c3.id, amount: 15.00)
+Donation.create!(user_id: u3.id, cause_id: c4.id, amount: 30.00)
+Donation.create!(user_id: u4.id, cause_id: c5.id, amount: 250.00)
+Donation.create!(user_id: u4.id, cause_id: c1.id, amount: 50.00)
+Donation.create!(user_id: u4.id, cause_id: c2.id, amount: 75.00)
+Donation.create!(user_id: u3.id, cause_id: c3.id, amount: 25.00)
+Donation.create!(user_id: u2.id, cause_id: c2.id, amount: 40.00)
+Donation.create!(user_id: u1.id, cause_id: c2.id, amount: 20.00)
 
 puts "✅ Done seeding!"

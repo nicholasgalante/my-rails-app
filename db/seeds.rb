@@ -42,6 +42,7 @@ c1 = Cause.create!(
   city: "New York",
   state: "NY",
   image_url: "https://unsplash.com/photos/3DkouQeZjp4",
+  goal: 300.00,
 )
 c2 = Cause.create!(
   title: "Helping Hands: Supporting a Student's Medical Needs",
@@ -50,6 +51,7 @@ c2 = Cause.create!(
   city: "New York",
   state: "NY",
   image_url: "https://unsplash.com/photos/RYABMCLP7aM",
+  goal: 750.00,
 )
 c3 = Cause.create!(
   title: "Empowering Literacy: School-wide Reading Event",
@@ -58,6 +60,7 @@ c3 = Cause.create!(
   city: "New York",
   state: "NY",
   image_url: "https://unsplash.com/photos/kcT-7cirBEw",
+  goal: 650.00,
 )
 c4 = Cause.create!(
   title: "Path to Robotic Ingenuity: Classroom Robotics Fund",
@@ -66,6 +69,7 @@ c4 = Cause.create!(
   city: "New York",
   state: "NY",
   image_url: "https://unsplash.com/photos/wCVNhNnI_2s",
+  goal: 800.00,
 )
 c5 = Cause.create!(
   title: "Tablets for Literary Adventures: Igniting Reading Passion",
@@ -74,6 +78,7 @@ c5 = Cause.create!(
   city: "New York",
   state: "NY",
   image_url: "https://example.com/images/reading_tablets.jpg",
+  goal: 1200.00,
 )
 
 puts "🌱 Seeding donations..."

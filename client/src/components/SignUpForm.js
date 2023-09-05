@@ -15,10 +15,12 @@ function SignUpForm({ setUser }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username,
-        email_address: email,
-        password,
-        password_confirmation: passwordConfirmation,
+        user: {
+          username,
+          email_address: email,
+          password,
+          password_confirmation: passwordConfirmation,
+        },
       }),
     }).then((r) => {
       setIsLoading(false);

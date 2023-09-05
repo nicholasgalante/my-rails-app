@@ -7,6 +7,7 @@ function NewCause() {
   const [schoolName, setSchoolName] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [goal, setGoal] = useState("");
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [errors, setErrors] = useState([]);
@@ -18,22 +19,36 @@ function NewCause() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        title,
-        schoolName,
-        city,
-        state,
-        description,
-        imageURL,
+        cause: {
+          title,
+          school_name: schoolName,
+          city,
+          state,
+          goal,
+          description,
+          image_url: imageURL,
+        },
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((res) => console.log(res));
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => console.log(err.errors));
       }
     });
   }
+
+  console.log("ERRORS: ", errors);
+
+  console.log({
+    title,
+    school_name: schoolName,
+    city,
+    state,
+    description,
+    image_url: imageURL,
+  });
 
   return (
     <Wrapper>
@@ -76,6 +91,16 @@ function NewCause() {
             autoComplete="off"
             value={state}
             onChange={(e) => setState(e.target.value)}
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="goal">Goal Amount</Label>
+          <Input
+            type="text"
+            id="goal"
+            autoComplete="off"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
           />
         </FormField>
         <FormField>

@@ -13,6 +13,7 @@ class CausesController < ApplicationController
 
   def create
     cause = Cause.create!(cause_params)
+    byebug
     render json: cause, status: :created
   end
 
@@ -25,7 +26,7 @@ class CausesController < ApplicationController
   private
 
   def cause_params
-    params.permit(:title, :description, :goal, :school_name, :city, :state, :image_url)
+    params.require(:cause).permit(:title, :description, :goal, :school_name, :city, :state, :image_url)
   end
 
 end

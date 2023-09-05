@@ -25,7 +25,7 @@ class CausesController < ApplicationController
   private
 
   def cause_params
-    params.permit(:title, :description, :school_name, :city, :state, :image_url)
+    params.permit(:title, :description, :goal, :school_name, :city, :state, :image_url)
   end
 
 end

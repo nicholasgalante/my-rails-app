@@ -4,11 +4,8 @@ import { Wrapper } from "../styles";
 import DonationForm from "../components/DonationForm";
 
 
-function CauseDetail({ causes }) {
+function CauseDetail({ causes, user }) {
    let { causeId } = useParams();
-
-   console.log("CAUSES: ", causes)
-   console.log("causeID: ", causeId)
 
    const selectedCause = causes.find(cause => cause.id === parseInt(causeId));
 
@@ -24,7 +21,7 @@ function CauseDetail({ causes }) {
       <Wrapper>
       {title}
       {school_name}
-      <DonationForm/>
+      <DonationForm user={user} />
       </Wrapper>
   )
 }

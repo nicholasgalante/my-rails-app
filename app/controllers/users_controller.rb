@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: :create
 
   def create
     user = User.create!(user_params)
@@ -7,9 +7,13 @@ skip_before_action :authorize, only: :create
     render json: user, status: :created
   end
 
-    def show
+  def show
+    if @current_user
       render json: @current_user
+    else
+      render json: { errors: ["Please sign in."] }, status: :unauthorized
     end
+  end
 
   private
 

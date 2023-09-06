@@ -30,6 +30,8 @@ function App() {
     });
   }, []);
 
+  console.log("USER: ", user)
+
   function handleAddNewCause(newCause) {
     // navigate(`/causes/${newCause.id}`);
     setCauses([...causes, newCause]);
@@ -55,7 +57,7 @@ function App() {
             element={<NewCause handleAddNewCause={handleAddNewCause} />}
           />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
-          <Route path="/causes/:causeId" element={<CauseDetail causes={causes}/>} />
+          <Route path="/causes/:causeId" element={<CauseDetail causes={causes} user={user} />} />
         </Routes>
       </Wrapper>
     </>

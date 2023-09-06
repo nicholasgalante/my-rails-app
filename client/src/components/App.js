@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
 import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
+import CauseDetail from "../pages/CauseDetail";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -54,6 +55,7 @@ function App() {
             element={<NewCause handleAddNewCause={handleAddNewCause} />}
           />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
+          <Route path="/causes/:causeId" element={<CauseDetail causes={causes}/>} />
         </Routes>
       </Wrapper>
     </>

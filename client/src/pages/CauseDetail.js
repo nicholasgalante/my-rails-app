@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Wrapper } from "../styles";
+import DonationForm from "../components/DonationForm";
 
 
 function CauseDetail({ causes }) {
@@ -23,6 +24,7 @@ function CauseDetail({ causes }) {
       <Wrapper>
       {title}
       {school_name}
+      <DonationForm/>
       </Wrapper>
   )
 }

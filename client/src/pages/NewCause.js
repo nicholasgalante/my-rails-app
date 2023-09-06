@@ -70,7 +70,7 @@ function NewCause({ handleAddNewCause }) {
         <FormField>
           <Label htmlFor="city">City</Label>
           <Input
-            type="city"
+            type="text"
             id="city"
             autoComplete="off"
             value={city}
@@ -90,7 +90,7 @@ function NewCause({ handleAddNewCause }) {
         <FormField>
           <Label htmlFor="goal">Goal Amount</Label>
           <Input
-            type="text"
+            type="number"
             id="goal"
             autoComplete="off"
             value={goal}

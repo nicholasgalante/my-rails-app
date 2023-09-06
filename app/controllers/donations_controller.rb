@@ -1,5 +1,4 @@
 class DonationsController < ApplicationController
-
   def index
     donations = Donation.all
     render json: donations, status: :ok
@@ -11,7 +10,8 @@ class DonationsController < ApplicationController
   end
 
   def create
-    donation = Donation.create!(donation_params)
+    user_id = session[:user_id]
+    donation = Donation.create!(user_id: user_id, amount: params[:amount], cause_id: params[:cause_id])
     render json: donation, status: :created
   end
 
@@ -27,9 +27,4 @@ class DonationsController < ApplicationController
     render json: {}, status: :no_content
   end
 
-  private
-
-  def donation_params
-    params.require(:donation).permit(:amount, :cause_id, :user_id)
-  end
 end

@@ -1,14 +1,34 @@
 import React, { useState } from "react";
 import { FormField, Label, Input, Button, Error } from "../styles";
+import { useParams } from "react-router-dom";
 
-function DonationForm() {
+
+function DonationForm({user}) {
   const [amount, setAmount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+  let { causeId } = useParams();
 
   function handleSubmit(e){
    e.preventDefault();
-   console.log("Submitted!")
+   fetch("/donations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        donation: {
+         user_id: user.id,
+         cause_id: causeId,
+         amount
+        },
+      }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((donation) => console.log(donation));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   }
 
   return (

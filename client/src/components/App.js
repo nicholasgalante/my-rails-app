@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
@@ -30,8 +30,6 @@ function App() {
     });
   }, []);
 
-  console.log("USER: ", user)
-
   function handleAddNewCause(newCause) {
     // navigate(`/causes/${newCause.id}`);
     setCauses([...causes, newCause]);
@@ -46,6 +44,18 @@ function App() {
     });
   }
 
+  //handle add new donation
+  function handleAddNewDonation(newDonation) {
+    const causeIndex = causes.findIndex(
+      (cause) => cause.id === newDonation.cause_id
+    );
+    const updatedCauses = [...causes];
+    const updatedCause = { ...updatedCauses[causeIndex] };
+    updatedCause.donations = [...updatedCause.donations, newDonation];
+    updatedCauses[causeIndex] = updatedCause;
+    setCauses(updatedCauses);
+  }
+
   return (
     <>
       <Navbar user={user} handleSignOut={handleSignOut} />
@@ -57,7 +67,16 @@ function App() {
             element={<NewCause handleAddNewCause={handleAddNewCause} />}
           />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
-          <Route path="/causes/:causeId" element={<CauseDetail causes={causes} user={user} />} />
+          <Route
+            path="/causes/:causeId"
+            element={
+              <CauseDetail
+                causes={causes}
+                user={user}
+                handleAddNewDonation={handleAddNewDonation}
+              />
+            }
+          />
         </Routes>
       </Wrapper>
     </>

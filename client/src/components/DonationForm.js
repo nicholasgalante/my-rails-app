@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { FormField, Label, Input, Button, Error } from "../styles";
 
 
-function DonationForm({user, selectedCause}) {
+function DonationForm({ selectedCause, handleAddNewDonation}) {
   const [amount, setAmount] = useState(0.00);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-
-  console.log(amount)
 
   function handleSubmit(e){
    e.preventDefault();
@@ -15,17 +13,15 @@ function DonationForm({user, selectedCause}) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        // donation: {
          cause_id: selectedCause.id,
          amount
-        // },
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((donation) => console.log(donation));
+        r.json().then((donation) => handleAddNewDonation(donation));
       } else {
-        r.json().then((err) => console.log(err.errors));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }

@@ -16,6 +16,12 @@ class CausesController < ApplicationController
     render json: cause, status: :created
   end
 
+  def update
+    cause = Cause.find(params[:id])
+    cause.update(cause_params)
+    render json: cause, status: :ok
+  end
+
   def destroy
    cause = Cause.find(params[:id])
    cause.destroy

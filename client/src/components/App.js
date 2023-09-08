@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
 import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
 import CauseDetail from "../pages/CauseDetail";
+import { useContext } from 'react';
 
 function App() {
   const [user, setUser] = useState(null);
   const [causes, setCauses] = useState([]);
-  // const navigate = useNavigate();
 
   //get causes
   useEffect(() => {

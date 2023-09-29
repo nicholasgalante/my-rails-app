@@ -41,7 +41,7 @@ c1 = Cause.create!(
   school_name: "Harmony Elementary School",
   city: "New York",
   state: "NY",
-  image_url: "https://unsplash.com/photos/3DkouQeZjp4",
+  image_url: "https://images.unsplash.com/photo-1511980725567-b9b7f0358905?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2957&q=80",
   goal: 300.00,
 )
 c2 = Cause.create!(
@@ -50,7 +50,7 @@ c2 = Cause.create!(
   school_name: "Sunshine Middle School",
   city: "New York",
   state: "NY",
-  image_url: "https://unsplash.com/photos/RYABMCLP7aM",
+  image_url: "https://images.unsplash.com/photo-1602542165989-999c53234fdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80",
   goal: 750.00,
 )
 c3 = Cause.create!(
@@ -59,7 +59,7 @@ c3 = Cause.create!(
   school_name: "Storyville High School",
   city: "New York",
   state: "NY",
-  image_url: "https://unsplash.com/photos/kcT-7cirBEw",
+  image_url: "https://images.unsplash.com/photo-1532294220147-279399e4e00f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80",
   goal: 650.00,
 )
 c4 = Cause.create!(
@@ -68,7 +68,7 @@ c4 = Cause.create!(
   school_name: "Innovation Academy",
   city: "New York",
   state: "NY",
-  image_url: "https://unsplash.com/photos/wCVNhNnI_2s",
+  image_url: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80",
   goal: 800.00,
 )
 c5 = Cause.create!(
@@ -77,7 +77,7 @@ c5 = Cause.create!(
   school_name: "Discovery Elementary",
   city: "New York",
   state: "NY",
-  image_url: "https://example.com/images/reading_tablets.jpg",
+  image_url: "https://images.unsplash.com/photo-1604933834413-4cbe62737214?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3174&q=80",
   goal: 1200.00,
 )
 

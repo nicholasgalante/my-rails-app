@@ -20,6 +20,8 @@ function CauseDetail({ causes, user, handleAddNewDonation }) {
     <Wrapper>
       {title}
       {school_name}
+      {description}
+      {goal}
       <DonationForm user={user} selectedCause={selectedCause} handleAddNewDonation={handleAddNewDonation}/>
       {selectedCause.donations.map(donation => <DonationCard key={donation.id} donation={donation} />)}
     </Wrapper>

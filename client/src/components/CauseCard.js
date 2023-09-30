@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, Thumbnail } from "../styles";
+import { Link } from "react-router-dom";
+
 
 function CauseCard({ cause }) {
   const { title, school_name, city, state, description, image_url } = cause;
 
   return (
     <Box>
-      <h1>{title}</h1>
+      <Link to={`/causes/${cause.id}`}><h1>{title}</h1></Link>
       <h3>{school_name}</h3>
       <h3>{city}, {state}.</h3>
       <Thumbnail src={image_url}/>

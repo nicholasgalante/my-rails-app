@@ -61,7 +61,7 @@ function App() {
       <Navbar user={user} handleSignOut={handleSignOut} />
       <Wrapper>
         <Routes>
-          <Route path="/" element={<CauseList causes={causes} />} />
+          <Route path="/causes" element={<CauseList causes={causes} />} />
           <Route
             path="/new"
             element={<NewCause handleAddNewCause={handleAddNewCause} />}

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
+import DonationsList from "../pages/DonationsList";
 import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
 import CauseDetail from "../pages/CauseDetail";
@@ -62,6 +63,7 @@ function App() {
       <Wrapper>
         <Routes>
           <Route path="/causes" element={<CauseList causes={causes} />} />
+          <Route path="/mydonations" element={<DonationsList/>} />
           <Route
             path="/new"
             element={<NewCause handleAddNewCause={handleAddNewCause} />}

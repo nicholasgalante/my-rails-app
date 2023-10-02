@@ -9,6 +9,7 @@ import { NavWrapper } from "./NavWrapper";
 import { Wrapper } from "./Wrapper";
 import { Box } from "./Box"
 import { Thumbnail } from "./Thumbnail";
+import { Image } from "./Image"
 
 
-export { Box, Button, Error, FormField, Input, Label, Logo, Nav, NavWrapper, Thumbnail, Wrapper };
+export { Box, Button, Error, FormField, Input, Image, Label, Logo, Nav, NavWrapper, Thumbnail, Wrapper };

@@ -3,7 +3,7 @@
 require "bcrypt"
 
 puts "Clearing the database..."
-[Cause, Donation].each do |model|
+[User, Cause, Donation].each do |model|
   model.delete_all
 end
 

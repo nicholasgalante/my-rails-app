@@ -4,6 +4,11 @@ class DonationsController < ApplicationController
     render json: donations, status: :ok
   end
 
+  def mydonations
+    donations = @current_user.donations
+    render json: donations, status: :ok
+  end
+
   def show
     donation = Donation.find(params[:id])
     render json: donation, status: :ok
@@ -26,5 +31,4 @@ class DonationsController < ApplicationController
     donation.destroy
     render json: {}, status: :no_content
   end
-
 end

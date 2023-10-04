@@ -7,10 +7,9 @@ import DonationsList from "../pages/MyDonationsList";
 import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
 import CauseDetail from "../pages/CauseDetail";
-import { useContext } from 'react';
+import { UserProvider } from "../context/UserContext";
 
 function App() {
-  const [user, setUser] = useState(null);
   const [causes, setCauses] = useState([]);
 
   //get causes
@@ -22,27 +21,9 @@ function App() {
     });
   }, []);
 
-  //auto-login
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
   function handleAddNewCause(newCause) {
     // navigate(`/causes/${newCause.id}`);
     setCauses([...causes, newCause]);
-  }
-
-  //sign out
-  function handleSignOut() {
-    fetch("/signout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    });
   }
 
   //handle add new donation
@@ -58,30 +39,29 @@ function App() {
   }
 
   return (
-    <>
-      <Navbar user={user} handleSignOut={handleSignOut} />
+    <UserProvider>
+      <Navbar />
       <Wrapper>
         <Routes>
           <Route path="/causes" element={<CauseList causes={causes} />} />
-          <Route path="/mydonations" element={<DonationsList/>} />
+          <Route path="/mydonations" element={<DonationsList />} />
           <Route
             path="/new"
             element={<NewCause handleAddNewCause={handleAddNewCause} />}
           />
-          <Route path="/signin" element={<SignIn setUser={setUser} />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route
             path="/causes/:causeId"
             element={
               <CauseDetail
                 causes={causes}
-                user={user}
                 handleAddNewDonation={handleAddNewDonation}
               />
             }
           />
         </Routes>
       </Wrapper>
-    </>
+    </UserProvider>
   );
 }
 

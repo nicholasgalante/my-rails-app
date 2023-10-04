@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormField, Label, Input, Button, Error } from "../styles";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 
-function SignInForm({ setUser }) {
+function SignInForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [user, setUser] = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleSubmit(e) {

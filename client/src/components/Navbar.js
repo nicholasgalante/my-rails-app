@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, NavWrapper, Logo, Nav } from "../styles";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
-function Navbar({ user, handleSignOut }) {
+function Navbar() {
   const [buttonText, setButtonText] = useState("");
   const [hovered, setHovered] = useState(false);
+  const [user, setUser] = useContext(UserContext)
+
 
   useEffect(() => {
     if (user && user.username) {
@@ -21,6 +24,15 @@ function Navbar({ user, handleSignOut }) {
     setHovered(false);
     setButtonText(user.username);
   };
+
+   //sign out
+   function handleSignOut() {
+    fetch("/signout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
 
   return (
     <NavWrapper>

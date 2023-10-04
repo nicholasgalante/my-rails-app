@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
-import DonationsList from "../pages/DonationsList";
+import DonationsList from "../pages/MyDonationsList";
 import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
 import CauseDetail from "../pages/CauseDetail";

@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 
-export const Nav = styled.nav`
+export const LeftNav = styled.nav`
   display: flex;
   gap: 4px;
   position: absolute;
-  right: 8px;
+  left: 8px;
 `;
 

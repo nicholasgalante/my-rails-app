@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Button, NavWrapper, Logo, Nav } from "../styles";
+import { Button, NavWrapper, Logo, RightNav, LeftNav } from "../styles";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 function Navbar() {
   const [buttonText, setButtonText] = useState("");
   const [hovered, setHovered] = useState(false);
-  const [user, setUser] = useContext(UserContext)
-
+  const [user, setUser] = useContext(UserContext);
 
   useEffect(() => {
     if (user && user.username) {
       setButtonText(user.username);
-    } 
+    }
   }, [user]);
 
   const handleHover = () => {
@@ -25,8 +24,7 @@ function Navbar() {
     setButtonText(user.username);
   };
 
-   //sign out
-   function handleSignOut() {
+  function handleSignOut() {
     fetch("/signout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
@@ -36,15 +34,22 @@ function Navbar() {
 
   return (
     <NavWrapper>
+      <LeftNav>
+        {user ? (
+          <>
+            <Link to="/new">
+              <Button>Create a Cause</Button>
+            </Link>
+            <Link to="/mydonations">
+              <Button>{"My Donations"}</Button>
+            </Link>
+          </>
+        ) : null}
+      </LeftNav>
       <Link to="/causes">
         <Logo>ClassAid</Logo>
       </Link>
-      <Nav>
-        {user ? (
-          <Link to="/new">
-            <Button>Create a Cause</Button>
-          </Link>
-        ) : null}
+      <RightNav>
         {user ? (
           <Link to="/causes">
             <Button
@@ -60,7 +65,7 @@ function Navbar() {
             <Button>Sign in</Button>
           </Link>
         )}
-      </Nav>
+      </RightNav>
     </NavWrapper>
   );
 }

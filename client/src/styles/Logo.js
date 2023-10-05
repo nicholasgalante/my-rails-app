@@ -1,9 +1,9 @@
 import { styled } from "styled-components"
 
 export const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
+  font-family: "Ariel";
   font-size: 3rem;
-  color: deeppink;
+  color: black;
   margin: 0;
   line-height: 1;
 

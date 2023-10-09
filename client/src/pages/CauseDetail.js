@@ -16,8 +16,6 @@ function CauseDetail({ causes, user, handleAddNewDonation }) {
   const { title, school_name, city, state, description, image_url, goal } =
     selectedCause;
 
-    console.log(selectedCause)
-
   return (
     <Wrapper>
       <h1>{title}</h1>

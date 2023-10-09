@@ -1,6 +1,7 @@
 import { Button } from "./Button";
 import { Error } from "./Error";
 import { FormField } from "./FormField";
+import { GlobalStyle } from "./GlobalStyle";
 import { Input } from "./Input";
 import { Label } from "./Label";
 import { LeftNav } from "./LeftNav";
@@ -17,6 +18,7 @@ export {
   Button,
   Error,
   FormField,
+  GlobalStyle,
   Input,
   Image,
   Label,

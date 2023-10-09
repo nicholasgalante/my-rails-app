@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+
   def index
     donations = Donation.all
     render json: donations, status: :ok
@@ -21,14 +22,24 @@ class DonationsController < ApplicationController
   end
 
   def update
-    donation = Donation.find(params[:id])
-    donation.update(donation_params)
-    render json: donation, status: :ok
+    donation = @current_user.donations.find(params[:id])
+    if donation
+      donation.update(donation_params)
+      render json: donation, status: :ok
+    else
+      render json: { error: "Donation doesn't exist or belong to user." }
+    end
   end
 
   def destroy
-    donation = Donation.find(params[:id])
+    donation = @current_user.donations.find(params[:id])
     donation.destroy
     render json: {}, status: :no_content
+  end
+
+  private
+
+  def donation_params
+    params.permit(:amount)
   end
 end

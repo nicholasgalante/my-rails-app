@@ -1,7 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import CauseCard from "../components/CauseCard";
-// import { Link } from "react-router-dom";
 import { Button } from "../styles/Button";
 import styled from "styled-components";
 

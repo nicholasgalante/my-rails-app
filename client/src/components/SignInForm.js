@@ -25,7 +25,7 @@ function SignInForm() {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => setUser(user));
-        navigate("/")
+        navigate("/causes")
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

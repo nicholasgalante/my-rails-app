@@ -11,13 +11,13 @@ class DonationsController < ApplicationController
   end
 
   def show
-    donation = Donation.find(params[:id])
+    donation = @current_user.donations.find(params[:id])
     render json: donation, status: :ok
   end
 
   def create
     user_id = session[:user_id]
-    donation = Donation.create!(user_id: user_id, amount: params[:amount], cause_id: params[:cause_id])
+    donation = @current_user.donations.create!(donation_params)
     render json: donation, status: :created
   end
 
@@ -40,6 +40,6 @@ class DonationsController < ApplicationController
   private
 
   def donation_params
-    params.require(:donation).permit(:amount)
+    params.require(:donation).permit(:amount, :cause_id)
   end
 end

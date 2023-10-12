@@ -10,7 +10,7 @@ function MyDonationsList({ causes }) {
     if (user != null) {
       setDonations(user.donations);
     }
-  }, user);
+  }, [user]);
 
   function onUpdateDonation(updatedDonation) {
     const updatedDonations = donations.map((donation) => {

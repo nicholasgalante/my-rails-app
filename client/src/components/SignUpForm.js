@@ -40,19 +40,6 @@ function SignUpForm() {
     });
   }
 
-  // if (r.ok) {
-  //   r.json()
-  //     .then((res) => {
-  //       handleAddNewCause(res);
-  //       navigate(`/causes`);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // } else {
-  //   r.json().then((err) => setErrors(err.errors));
-  // }
-
   return (
     <form onSubmit={handleSubmit}>
       <FormField>

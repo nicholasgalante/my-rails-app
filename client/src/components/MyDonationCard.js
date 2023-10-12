@@ -3,7 +3,7 @@ import { FormField, Box, Button, Input } from "../styles";
 
 function MyDonationCard({ donation, onUpdateDonation, onDeleteDonation }) {
   const [updating, setUpdating] = useState(false);
-  const [amount, setAmount] = useState(donation.amount);
+  const [amount, setAmount] = useState([donation.amount]);
 
   function handleEdit() {
     setUpdating(!updating);

@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import MyDonationCard from "../components/MyDonationCard";
 
-function MyDonationsList() {
+function MyDonationsList({ causes }) {
+  const [user, setUser] = useContext(UserContext);
   const [donations, setDonations] = useState([]);
 
   useEffect(() => {
-    fetch("/mydonations").then((r) => {
-      if (r.ok) {
-        r.json().then((donations) => setDonations(donations));
-      }
-    });
-  }, []);
+    if (user != null) {
+      setDonations(user.donations);
+    }
+  }, user);
 
   function onUpdateDonation(updatedDonation) {
     const updatedDonations = donations.map((donation) => {
-      return donation.id == updatedDonation.id ? updatedDonation : donation;
+      return donation.id === updatedDonation.id ? updatedDonation : donation;
     });
     setDonations(updatedDonations);
   }
 
-  function onDeleteDonation(deletedDonation){
+  function onDeleteDonation(deletedDonation) {
     const updatedDonations = donations.filter((donation) => {
       return donation.id !== deletedDonation.id;
-    })
+    });
     setDonations(updatedDonations);
   }
-
 
   return donations.map((donation) => (
     <MyDonationCard

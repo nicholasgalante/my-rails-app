@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
-function SignUpForm({ setUser }) {
+
+function SignUpForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -27,13 +30,28 @@ function SignUpForm({ setUser }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => setUser(user));
-        navigate("/")
+        r.json().then((res) => {
+          setUser(res);
+          navigate("/causes");
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
+
+  // if (r.ok) {
+  //   r.json()
+  //     .then((res) => {
+  //       handleAddNewCause(res);
+  //       navigate(`/causes`);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // } else {
+  //   r.json().then((err) => setErrors(err.errors));
+  // }
 
   return (
     <form onSubmit={handleSubmit}>

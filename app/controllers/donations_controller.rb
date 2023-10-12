@@ -5,11 +5,6 @@ class DonationsController < ApplicationController
     render json: donations, status: :ok
   end
 
-  def mydonations
-    donations = @current_user.donations
-    render json: donations, status: :ok
-  end
-
   def show
     donation = @current_user.donations.find(params[:id])
     render json: donation, status: :ok

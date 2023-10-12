@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 function CauseCard({ cause }) {
-  const { title, school_name, city, state, description, image_url } = cause;
+  const { title, school_name, city, state, image_url } = cause;
 
   return (
     <Box>

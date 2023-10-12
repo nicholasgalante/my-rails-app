@@ -44,7 +44,10 @@ function App() {
       <Wrapper>
         <Routes>
           <Route path="/causes" element={<CauseList causes={causes} />} />
-          <Route path="/mydonations" element={<DonationsList />} />
+          <Route
+            path="/mydonations"
+            element={<DonationsList causes={causes} />}
+          />
           <Route
             path="/new"
             element={<NewCause handleAddNewCause={handleAddNewCause} />}

@@ -35,9 +35,13 @@ function NewCause({ handleAddNewCause }) {
       setIsLoading(false);
       if (r.ok) {
         r.json()
-          .then((res) => console.log(res.id))
-          .then((res) => handleAddNewCause(res))
-         //  .then((res) => navigate(`/causes/${res.id}`));
+          .then((res) => {
+            handleAddNewCause(res);
+            navigate(`/causes`);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

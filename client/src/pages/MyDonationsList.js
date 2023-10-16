@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import MyDonationCard from "../components/MyDonationCard";
 
-function MyDonationsList({ causes }) {
+function MyDonationsList() {
   const [user, setUser] = useContext(UserContext);
   const [donations, setDonations] = useState([]);
 

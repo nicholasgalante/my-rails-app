@@ -1,5 +1,5 @@
 class CausesController < ApplicationController
-  skip_before_action :authorize, only: :index
+  skip_before_action :authorize, only: [:index, :classroom, :search]
 
   def index
     causes = Cause.all
@@ -27,6 +27,17 @@ class CausesController < ApplicationController
    cause.destroy
    render json: {}, status: :no_content
   end
+
+  def my_causes
+    causes = @cuurent_user.causes
+    render json: donation, status: :ok
+  end
+
+  # def show
+  #   donation = @current_user.donations.find(params[:id])
+  #   render json: donation, status: :ok
+  # end
+
 
   private
 

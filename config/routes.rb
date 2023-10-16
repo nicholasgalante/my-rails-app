@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :causes
+  get "/mycauses", to: "causes#my_causes"
   resources :donations
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

@@ -43,6 +43,9 @@ function Navbar() {
             <Link to="/mydonations">
               <Button>{"My Donations"}</Button>
             </Link>
+            <Link to="/mycauses">
+              <Button>{"My Causes"}</Button>
+            </Link>
           </>
         ) : null}
       </LeftNav>
@@ -71,24 +74,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-// import React, { useState } from 'react';
-// import './Button.css'; // Import your CSS file for styling
-
-// const MyButton = () => {
-//   const [buttonText, setButtonText] = useState('Default Text');
-//   const [hovered, setHovered] = useState(false);
-
-//   const handleHover = () => {
-//     setHovered(!hovered);
-//     setButtonText(hovered ? 'Default Text' : 'New Text On Hover');
-//   };
-
-//   return (
-//     <button className="custom-button" onMouseEnter={handleHover} onMouseLeave={handleHover}>
-//       {buttonText}
-//     </button>
-//   );
-// };
-
-// export default MyButton;

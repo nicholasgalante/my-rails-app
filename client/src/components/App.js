@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
 import CauseList from "../pages/CauseList";
+import MyCauses from "../pages/MyCauses";
 import DonationsList from "../pages/MyDonationsList";
 import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
@@ -22,7 +23,6 @@ function App() {
   }, []);
 
   function handleAddNewCause(newCause) {
-    // navigate(`/causes/${newCause.id}`);
     setCauses([...causes, newCause]);
   }
 
@@ -38,6 +38,7 @@ function App() {
     setCauses(updatedCauses);
   }
 
+
   return (
     <UserProvider>
       <Navbar />
@@ -48,6 +49,7 @@ function App() {
             path="/mydonations"
             element={<DonationsList causes={causes} />}
           />
+          <Route path="/mycauses" element={<MyCauses causes={causes}/>}/>
           <Route
             path="/new"
             element={<NewCause handleAddNewCause={handleAddNewCause} />}

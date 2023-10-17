@@ -4,30 +4,29 @@ import MyDonationCard from "../components/MyDonationCard";
 
 function MyDonationsList() {
   const [user, setUser] = useContext(UserContext);
-  const [donations, setDonations] = useState([]); //intermediate state -- shouldn't be using
-
-  // useEffect(() => {
-  //   if (user != null) {
-  //     // setDonations(user.donations);
-  //   }
-  // }, [user]);
 
   if (!user) {
     return <div>Please sign in.</div>;
   }
 
   function onUpdateDonation(updatedDonation) {
-    // const updatedDonations = donations.map((donation) => {
-    //   return donation.id === updatedDonation.id ? updatedDonation : donation;
-    // });
-    // setDonations(updatedDonations);
+    const updatedDonations = user.donations.map((donation) => {
+      return donation.id === updatedDonation.id ? updatedDonation : donation;
+    });
+    setUser((prevUser) => ({
+      ...prevUser,
+      donations: updatedDonations,
+    }));
   }
 
   function onDeleteDonation(deletedDonation) {
-    // const updatedDonations = donations.filter((donation) => {
-    //   return donation.id !== deletedDonation.id;
-    // });
-    // setDonations(updatedDonations);
+    const updatedDonations = user.donations.filter((donation) => {
+      return donation.id !== deletedDonation.id;
+    });
+    setUser((prevUser) => ({
+      ...prevUser,
+      donations: updatedDonations,
+    }));
   }
 
   return user.donations.map((donation) => (

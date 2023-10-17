@@ -3,7 +3,6 @@ import { FormField, Label, Input, Button, Error } from "../styles";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
-
 function SignInForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -24,10 +23,12 @@ function SignInForm() {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => setUser(user));
-        navigate("/causes")
+        r.json().then((user) => {
+          setUser(user);
+          navigate("/causes");
+        });
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => console.log(err.errors));
       }
     });
   }

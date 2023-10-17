@@ -28,17 +28,6 @@ class CausesController < ApplicationController
    render json: {}, status: :no_content
   end
 
-  def my_causes
-    causes = @cuurent_user.causes
-    render json: donation, status: :ok
-  end
-
-  # def show
-  #   donation = @current_user.donations.find(params[:id])
-  #   render json: donation, status: :ok
-  # end
-
-
   private
 
   def cause_params

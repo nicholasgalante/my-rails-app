@@ -43,9 +43,6 @@ function Navbar() {
             <Link to="/mydonations">
               <Button>{"My Donations"}</Button>
             </Link>
-            <Link to="/mycauses">
-              <Button>{"My Causes"}</Button>
-            </Link>
           </>
         ) : null}
       </LeftNav>

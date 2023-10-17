@@ -13,7 +13,6 @@ import { UserProvider } from "../context/UserContext";
 function App() {
   const [causes, setCauses] = useState([]);
 
-  //get causes
   useEffect(() => {
     fetch("/causes").then((r) => {
       if (r.ok) {
@@ -26,7 +25,6 @@ function App() {
     setCauses([...causes, newCause]);
   }
 
-  //handle add new donation
   function handleAddNewDonation(newDonation) {
     const causeIndex = causes.findIndex(
       (cause) => cause.id === newDonation.cause_id

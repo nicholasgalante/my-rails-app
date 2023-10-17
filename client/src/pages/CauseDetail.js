@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Wrapper, Image } from "../styles";
 import DonationForm from "../components/DonationForm";
 import DonationCard from "../components/DonationCard";
+import { UserContext } from "../context/UserContext";
 
-function CauseDetail({ causes, user, handleAddNewDonation }) {
+
+function CauseDetail({ causes, handleAddNewDonation }) {
+  const [user, setUser] = useContext(UserContext);
   let { causeId } = useParams();
 
   const selectedCause = causes.find((cause) => cause.id === parseInt(causeId));
@@ -27,7 +30,7 @@ function CauseDetail({ causes, user, handleAddNewDonation }) {
       <br/>
       <Image src={image_url}/>
       <h1>Donate to this Cause</h1>
-      <DonationForm user={user} selectedCause={selectedCause} handleAddNewDonation={handleAddNewDonation}/>
+      <DonationForm selectedCause={selectedCause} handleAddNewDonation={handleAddNewDonation}/>
       <h1>Previous Donations</h1>
       {selectedCause.donations.map(donation => <DonationCard key={donation.id} donation={donation} />)}
     </Wrapper>

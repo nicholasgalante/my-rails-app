@@ -9,6 +9,7 @@ import { Wrapper } from "../styles";
 import NewCause from "../pages/NewCause";
 import CauseDetail from "../pages/CauseDetail";
 import { UserProvider } from "../context/UserContext";
+import { CauseProvider } from "../context/CauseContext";
 
 function App() {
   const [causes, setCauses] = useState([]);
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <UserProvider>
+    <CauseProvider>
       <Navbar />
       <Wrapper>
         <Routes>
@@ -64,6 +66,7 @@ function App() {
           />
         </Routes>
       </Wrapper>
+      </CauseProvider>
     </UserProvider>
   );
 }

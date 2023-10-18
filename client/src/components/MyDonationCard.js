@@ -5,7 +5,7 @@ import { CauseContext } from "../context/CauseContext";
 
 function MyDonationCard({ donation }) {
   const { setUser } = useContext(UserContext);
-  const [causes, setCauses] = useContext(CauseContext);
+  const { setCauses} = useContext(CauseContext);
   const [updating, setUpdating] = useState(false);
   const [amount, setAmount] = useState([donation.amount]);
 

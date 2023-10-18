@@ -1,11 +1,11 @@
-import React , {useContext} from "react";
+import React, { useContext } from "react";
 import CauseCard from "../components/CauseCard";
 import { Button } from "../styles/Button";
 import styled from "styled-components";
 import { CauseContext } from "../context/CauseContext";
 
 function CauseList() {
-  const [causes, setCauses] = useContext(CauseContext);
+  const { causes } = useContext(CauseContext);
 
   if (!causes) {
     return <div>Please sign in to create a cause.</div>;

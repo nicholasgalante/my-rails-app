@@ -6,7 +6,7 @@ import DonationCard from "../components/DonationCard";
 import { CauseContext } from "../context/CauseContext";
 
 function CauseDetail() {
-  const [causes, setCauses] = useContext(CauseContext);
+  const { causes } = useContext(CauseContext);
   let { causeId } = useParams();
 
   if (!causes) {

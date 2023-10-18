@@ -8,7 +8,7 @@ function DonationForm({ selectedCause }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const { setUser } = useContext(UserContext);
-  const [causes, setCauses] = useContext(CauseContext);
+  const { setCauses} = useContext(CauseContext);
 
   function handleSubmit(e) {
     e.preventDefault();

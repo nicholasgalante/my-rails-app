@@ -9,32 +9,8 @@ function MyDonationsList() {
     return <div>Please sign in.</div>;
   }
 
-  function onUpdateDonation(updatedDonation) {
-    const updatedDonations = user.donations.map((donation) => {
-      return donation.id === updatedDonation.id ? updatedDonation : donation;
-    });
-    setUser((prevUser) => ({
-      ...prevUser,
-      donations: updatedDonations,
-    }));
-  }
-
-  function onDeleteDonation(deletedDonation) {
-    const updatedDonations = user.donations.filter((donation) => {
-      return donation.id !== deletedDonation.id;
-    });
-    setUser((prevUser) => ({
-      ...prevUser,
-      donations: updatedDonations,
-    }));
-  }
-
   return user.donations.map((donation) => (
-    <MyDonationCard
-      donation={donation}
-      onUpdateDonation={onUpdateDonation}
-      onDeleteDonation={onDeleteDonation}
-    />
+    <MyDonationCard donation={donation}/>
   ));
 }
 

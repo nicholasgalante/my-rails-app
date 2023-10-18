@@ -1,35 +1,103 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormField, Box, Button, Input } from "../styles";
+import { UserContext } from "../context/UserContext";
+import { CauseContext } from "../context/CauseContext";
 
-function MyDonationCard({ donation, onUpdateDonation, onDeleteDonation }) {
+function MyDonationCard({ donation }) {
+  const [user, setUser] = useContext(UserContext);
+  const [causes, setCauses] = useContext(CauseContext);
   const [updating, setUpdating] = useState(false);
   const [amount, setAmount] = useState([donation.amount]);
 
   function handleEdit() {
     setUpdating(!updating);
   }
-
-  function handleSubmit(e) {
+  
+  async function handleSubmit(e) {
     e.preventDefault();
-    setUpdating(!updating);
-    fetch(`/donations/${donation.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        amount,
-      }),
-    })
-      .then((res) => res.json())
-      .then((updatedDonation) => onUpdateDonation(updatedDonation));
+    setUpdating(true);
+  
+    try {
+      const response = await fetch(`/donations/${donation.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount,
+        }),
+      });
+  
+      if (response.ok) {
+        const updatedDonation = await response.json();
+        onUpdateUserDonation(updatedDonation);
+        onUpdateCauseDonation(updatedDonation);
+      } else {
+        throw new Error("Failed to update donation");
+      }
+    } catch (error) {
+      console.error("Error updating donation:", error);
+    } finally {
+      setUpdating(false);
+    }
+  }
+  
+  function onUpdateCauseDonation(updatedDonation) {
+    const causeId = updatedDonation.cause_id;
+    setCauses((prevCauses) =>
+      prevCauses.map((cause) =>
+        cause.id === causeId
+          ? {
+              ...cause,
+              donations: cause.donations.map((causeDonation) =>
+                causeDonation.id === updatedDonation.id ? updatedDonation : causeDonation
+              ),
+            }
+          : cause
+      )
+    );
+  }
+  
+  function onUpdateUserDonation(updatedDonation) {
+    setUser((prevUser) => ({
+      ...prevUser,
+      donations: prevUser.donations.map((donation) =>
+        donation.id === updatedDonation.id ? updatedDonation : donation
+      ),
+    }));
   }
 
-  function handleDelete() {
-    fetch(`/donations/${donation.id}`, {
-      method: "DELETE",
-    })
-    .then(() => onDeleteDonation(donation))
+  async function handleDelete() {
+    try {
+      await fetch(`/donations/${donation.id}`, {
+        method: "DELETE",
+      });
+  
+      onDeleteUserDonation(donation);
+      onDeleteCauseDonation(donation.cause_id);
+    } catch (error) {
+      console.error("Error deleting donation:", error);
+    }
+  }
+  
+  function onDeleteUserDonation(deletedDonation) {
+    setUser((prevUser) => ({
+      ...prevUser,
+      donations: prevUser.donations.filter((donation) => donation.id !== deletedDonation.id),
+    }));
+  }
+  
+  function onDeleteCauseDonation(causeId) {
+    setCauses((prevCauses) =>
+      prevCauses.map((cause) =>
+        cause.id === causeId
+          ? {
+              ...cause,
+              donations: cause.donations.filter((causeDonation) => causeDonation.id !== donation.id),
+            }
+          : cause
+      )
+    );
   }
 
   return (

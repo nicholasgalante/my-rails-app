@@ -1,9 +1,16 @@
-import React from "react";
+import React , {useContext} from "react";
 import CauseCard from "../components/CauseCard";
 import { Button } from "../styles/Button";
 import styled from "styled-components";
+import { CauseContext } from "../context/CauseContext";
 
-function CauseList({ causes }) {
+function CauseList() {
+  const [causes, setCauses] = useContext(CauseContext);
+
+  if (!causes) {
+    return <div>Please sign in to create a cause.</div>;
+  }
+
   return (
     <Wrapper>
       {causes.length > 0 ? (

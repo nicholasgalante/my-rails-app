@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import MyDonationCard from "../components/MyDonationCard";
 
-function MyDonationsList() {
+function MyDonations() {
   const { user } = useContext(UserContext);
 
   if (!user) {
@@ -10,8 +10,8 @@ function MyDonationsList() {
   }
 
   return user.donations.map((donation) => (
-    <MyDonationCard donation={donation}/>
+    <MyDonationCard key={donation.id} donation={donation}/>
   ));
 }
 
-export default MyDonationsList;
+export default MyDonations;

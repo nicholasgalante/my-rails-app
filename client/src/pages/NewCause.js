@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { Button, Error, Input, FormField, Label, Wrapper } from "../styles";
 import { useNavigate } from "react-router-dom";
+import { CauseContext } from "../context/CauseContext";
 
-function NewCause({ handleAddNewCause }) {
+function NewCause() {
+  const { setCauses } = useContext(CauseContext);
   const [title, setTitle] = useState("");
   const [schoolName, setSchoolName] = useState("");
   const [city, setCity] = useState("");
@@ -35,8 +37,8 @@ function NewCause({ handleAddNewCause }) {
       setIsLoading(false);
       if (r.ok) {
         r.json()
-          .then((res) => {
-            handleAddNewCause(res);
+          .then((newCause) => {
+            setCauses((prevCauses) => [...prevCauses, newCause]);
             navigate(`/causes`);
           })
           .catch((error) => {

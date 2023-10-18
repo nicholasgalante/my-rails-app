@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SignIn from "../pages/SignIn";
@@ -12,30 +12,10 @@ import { UserProvider } from "../context/UserContext";
 import { CauseProvider } from "../context/CauseContext";
 
 function App() {
-  // const [causes, setCauses] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("/causes").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((causes) => setCauses(causes));
-  //     }
-  //   });
-  // }, []);
 
   function handleAddNewCause(newCause) {
     // setCauses([...causes, newCause]);
   }
-
-  //  function handleAddNewDonation(newDonation) {
-  // const causeIndex = causes.findIndex(
-  //   (cause) => cause.id === newDonation.cause_id
-  // );
-  // const updatedCauses = [...causes];
-  // const updatedCause = { ...updatedCauses[causeIndex] };
-  // updatedCause.donations = [...updatedCause.donations, newDonation];
-  // updatedCauses[causeIndex] = updatedCause;
-  // setCauses(updatedCauses);
-  //  }
 
   return (
     <UserProvider>

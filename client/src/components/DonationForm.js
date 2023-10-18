@@ -7,7 +7,7 @@ function DonationForm({ selectedCause }) {
   const [amount, setAmount] = useState(0.0);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [user, setUser] = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [causes, setCauses] = useContext(CauseContext);
 
   function handleSubmit(e) {

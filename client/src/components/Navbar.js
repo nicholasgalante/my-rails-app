@@ -6,7 +6,7 @@ import { UserContext } from "../context/UserContext";
 function Navbar() {
   const [buttonText, setButtonText] = useState("");
   const [hovered, setHovered] = useState(false);
-  const [user, setUser] = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     if (user && user.username) {
@@ -43,6 +43,7 @@ function Navbar() {
             <Link to="/mydonations">
               <Button>{"My Donations"}</Button>
             </Link>
+
           </>
         ) : null}
       </LeftNav>

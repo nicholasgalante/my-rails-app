@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import MyDonationCard from "../components/MyDonationCard";
 
 function MyDonationsList() {
-  const [user, setUser] = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user) {
     return <div>Please sign in.</div>;

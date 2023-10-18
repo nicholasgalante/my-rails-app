@@ -8,7 +8,7 @@ function SignInForm() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [user, setUser] = useContext(UserContext);
+  const { setUser} = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -28,7 +28,7 @@ function SignInForm() {
           navigate("/causes");
         });
       } else {
-        r.json().then((err) => console.log(err.errors));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }

@@ -3,7 +3,6 @@ import { Button, Error, Input, FormField, Label } from "../styles";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
-
 function SignUpForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +10,7 @@ function SignUpForm() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleSubmit(e) {

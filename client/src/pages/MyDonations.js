@@ -7,7 +7,9 @@ function MyDonations() {
   const { user } = useContext(UserContext);
 
   if (!user) {
-    return <div>Please sign in.</div>;
+    return <div>Please sign in to view your donations!</div>;
+  } else if (user.donations.length == 0) {
+    return <div>Visit the causes page to make your first donation!</div>;
   }
 
   return (

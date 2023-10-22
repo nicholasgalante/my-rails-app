@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import { FormField, Box, Button, Input } from "../styles";
 import { UserContext } from "../context/UserContext";
 import { CauseContext } from "../context/CauseContext";
+import { Wrapper } from "../styles";
 
 function MyDonationCard({ donation }) {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { setCauses} = useContext(CauseContext);
   const [updating, setUpdating] = useState(false);
   const [amount, setAmount] = useState([donation.amount]);
@@ -100,8 +101,15 @@ function MyDonationCard({ donation }) {
     );
   }
 
+  function causeName(){
+    const cause = user.causes.find((cause) => {
+      return cause.id === donation.cause_id 
+    })
+    return cause.title
+  }
+
   return (
-    <>
+    <Wrapper>
       {updating ? (
         <Box>
           <form onSubmit={handleSubmit}>
@@ -123,12 +131,15 @@ function MyDonationCard({ donation }) {
         </Box>
       ) : (
         <Box>
-          {donation.amount}
+          ${donation.amount}
+          <br/>
+          {causeName()}
+          <br/>
           <Button onClick={handleEdit}>Edit</Button>
           <Button onClick={handleDelete}>Delete</Button>
         </Box>
       )}
-    </>
+    </Wrapper>
   );
 }
 

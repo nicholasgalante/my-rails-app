@@ -26,6 +26,7 @@ function DonationForm({ selectedCause }) {
         r.json().then((donation) => {
           setCauses((prevCauses) => addDonationToCause(prevCauses, donation)); 
           setUser((prevUser) => addDonationToUser(prevUser, donation)); 
+          setUser((prevUser) => addCauseToUser(prevUser, selectedCause));
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -53,6 +54,12 @@ function DonationForm({ selectedCause }) {
       updatedUser.donations = [];
     }
     updatedUser.donations.push(newDonation);
+    return updatedUser;
+  }
+
+  function addCauseToUser(user, newCause){
+    const updatedUser = { ...user };
+    updatedUser.causes.push(newCause);
     return updatedUser;
   }
 

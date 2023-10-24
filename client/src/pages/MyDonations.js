@@ -8,7 +8,7 @@ function MyDonations() {
 
   if (!user) {
     return <div>Please sign in to view your donations!</div>;
-  } else if (user.donations.length == 0) {
+  } else if (user.donations.length === 0) {
     return <div>Visit the causes page to make your first donation!</div>;
   }
 

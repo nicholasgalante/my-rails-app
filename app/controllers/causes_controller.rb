@@ -1,5 +1,5 @@
 class CausesController < ApplicationController
-  skip_before_action :authorize, only: [:index, :classroom, :search]
+  skip_before_action :authorize, only: [:index]
 
   def index
     causes = Cause.all

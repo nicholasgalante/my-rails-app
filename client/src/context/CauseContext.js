@@ -13,8 +13,6 @@ export const CauseProvider = ({ children }) => {
     });
   }, []);
 
-  console.log(causes)
-
   return (
     <CauseContext.Provider value={{causes, setCauses}}>
       {children}

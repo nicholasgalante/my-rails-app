@@ -13,7 +13,14 @@ function MyDonationCard({ donation }) {
   function handleEdit() {
     setUpdating(!updating);
   }
-  
+
+  function causeName(){ 
+    const cause = user.causes.find((cause) => { 
+      return cause.id === donation.cause_id 
+    })
+    return cause.title
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setUpdating(true);
@@ -101,12 +108,7 @@ function MyDonationCard({ donation }) {
     );
   }
 
-  function causeName(){
-    const cause = user.causes.find((cause) => {
-      return cause.id === donation.cause_id 
-    })
-    return cause.title
-  }
+
 
   return (
     <Wrapper>
